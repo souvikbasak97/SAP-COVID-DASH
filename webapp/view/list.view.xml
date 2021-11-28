@@ -1,0 +1,39 @@
+<mvc:View
+    controllerName="covidapp.controller.list"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    displayBlock="true"
+    height="100%"
+    xmlns="sap.m"
+>
+    <Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="List" title="{i18n>title1}" showHeader="false">
+                <Bar >
+                    <contentLeft>
+                        <Button icon="sap-icon://sys-back-2" press="onNavback"></Button>
+                    </contentLeft>
+                    <contentMiddle>
+                        <Label text="List View of Covid-19 cases"></Label>
+                    </contentMiddle>
+                </Bar>
+                    <List
+                    id="myList"
+                    mode="MultiSelect"
+                    headerText="Total cases :{Latest>/data/summary/total}"
+                    footerText="Latest covid count"
+                    items="{Latest>/data/regional}">
+                    <items>
+                <StandardListItem
+                    title="{Latest>loc}"
+                    description="Total cases :{Latest>totalConfirmed}"
+                    info="Deaths :{Latest>deaths}"
+                />
+		</items>
+	    </List>
+                </Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

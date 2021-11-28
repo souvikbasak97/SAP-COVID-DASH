@@ -1,0 +1,136 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "covidapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "ach": "ach"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://task",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+
+  "sap.ui5": {
+    "flexEnabled": false,
+    "rootView": {
+      "viewName": "covidapp.view.dashboard",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "dependencies": {
+			"minUI5Version": "1.96.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "covidapp.i18n.i18n"
+        }
+      },
+      "JSON": {
+          "type": "sap.ui.model.json.JSONModel",
+            "uri": "model/data.json"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "covidapp.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "dashboard",
+          "pattern": "",
+          "target": ["Targetdashboard"]
+        },
+        {
+            "name":"list",
+            "pattern":"list",
+            "target":["Targetlist"]
+        },
+        {
+            "name":"pie",
+            "pattern":"pie",
+            "target":["Targetpie"]
+        },
+        {
+            "name":"active",
+            "pattern": "active",
+            "target":["Targetactive"]
+        }
+      ],
+      "targets": {
+        "Targetdashboard":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "tdashboard",
+          "viewName": "dashboard"
+        },
+        "Targetlist": {
+            "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "tlist",
+          "viewName": "list"
+        },
+        "Targetpie": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "tpie",
+          "viewName": "pie"
+        },
+        "Targetactive":{
+            "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "active",
+          "viewName": "active"
+        }
+      }
+    }
+  }
+}
